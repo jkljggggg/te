@@ -133,7 +133,7 @@ class PbxClient(Client):
                         InlineKeyboardButton("RAJA", url="https://t.me/Rajaraj909"),
                     ],
                     [
-                    InlineKeyboardButton("🦋 𝐏ʙx 𝐁ᴏᴛ 𝐒ᴜᴘᴘᴏʀᴛ ❤️", url="https://t.me/provhshs"),
+                    InlineKeyboardButton("🦋 𝐒ᴜᴘᴘᴏʀᴛ ❤️", url="https://t.me/provhshs"),
                     ],
                 ]
             ),
