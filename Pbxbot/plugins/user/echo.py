@@ -1,6 +1,7 @@
 import asyncio
 
 from pyrogram import Client, filters
+from pyrogram.errors import ChatSendStickersForbidden  # FIX: Error import kiya gaya
 from pyrogram.types import Message
 
 from Pbxbot.core import Symbols
@@ -59,12 +60,20 @@ async def listecho(client: Client, message: Message):
 
 @custom_handler(filters.incoming & ~filters.service)
 async def echo_handler(client: Client, message: Message):
+    # FIX 1: Check kiya gaya ki message.from_user None toh nahi hai
+    if not message.from_user:
+        return
+
     if not await db.is_echo(client.me.id, message.chat.id, message.from_user.id):
         return
 
     await asyncio.sleep(1)
     if message.sticker:
-        await message.reply_sticker(message.sticker.file_id)
+        # FIX 2: Sticker permission error ko handle kiya gaya
+        try:
+            await message.reply_sticker(message.sticker.file_id)
+        except ChatSendStickersForbidden:
+            pass
     elif message.text:
         await message.reply(message.text)
     elif message.photo:
