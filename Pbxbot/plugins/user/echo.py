@@ -60,7 +60,7 @@ async def listecho(client: Client, message: Message):
 
 @custom_handler(filters.incoming & ~filters.service)
 async def echo_handler(client: Client, message: Message):
-    # FIX 1: Check kiya gaya ki message.from_user None toh nahi hai
+    # FIX: Pehle check karein ki message.from_user hai ya nahi
     if not message.from_user:
         return
 
@@ -69,7 +69,6 @@ async def echo_handler(client: Client, message: Message):
 
     await asyncio.sleep(1)
     if message.sticker:
-        # FIX 2: Sticker permission error ko handle kiya gaya
         try:
             await message.reply_sticker(message.sticker.file_id)
         except ChatSendStickersForbidden:
