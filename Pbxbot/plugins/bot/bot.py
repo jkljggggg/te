@@ -23,7 +23,8 @@ async def start_pm(_, message: Message):
 
 @Pbxbot.bot.on_message(filters.command("help") & Config.AUTH_USERS)
 async def help_pm(_, message: Message):
-    btns = gen_bot_help_buttons()
+    # FIX: 'await' keyword add kiya gaya
+    btns = await gen_bot_help_buttons()
 
     await message.reply_text(
         HELP_MSG,
