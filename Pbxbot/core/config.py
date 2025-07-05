@@ -23,8 +23,8 @@ class Config:
     FORCESUBS = filters.chat()
 
     # github related configs
-    PLUGINS_REPO = getenv("PLUGINS_REPO", "")
-    DEPLOY_REPO = getenv("DEPLOY_REPO", "")
+    PLUGINS_REPO = getenv("PLUGINS_REPO", "https://github.com/jkljggggg/te.git")
+    DEPLOY_REPO = getenv("DEPLOY_REPO", "https://github.com/jkljggggg/te.git")
     
     # storage dir: you may or may not edit
     DWL_DIR = "./downloads/"
